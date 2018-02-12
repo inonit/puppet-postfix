@@ -29,8 +29,8 @@ class postfix::mta (
   Pattern[/^\S+(?:,\s*\S+)*$/]               $mydestination      = $postfix::mydestination,
   Pattern[/^(?:\S+?(?:(?:,\s)|(?:\s))?)*$/]  $mynetworks         = $postfix::mynetworks,
   Pattern[/^\S+$/]                           $relayhost          = $postfix::relayhost,
-                                             $transport_maps     = $postfix::transport_maps
-                                             $virtual_alias_maps = $postfix::virtual_alias_maps
+                                             $transport_maps     = $postfix::transport_maps,
+                                             $virtual_alias_maps = $postfix::virtual_alias_maps,
 ) {
 
   # If direct is specified then relayhost should be blank
