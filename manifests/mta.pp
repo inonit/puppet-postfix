@@ -26,9 +26,11 @@
 #   }
 #
 class postfix::mta (
-  Pattern[/^\S+(?:,\s*\S+)*$/]               $mydestination = $postfix::mydestination,
-  Pattern[/^(?:\S+?(?:(?:,\s)|(?:\s))?)*$/]  $mynetworks    = $postfix::mynetworks,
-  Pattern[/^\S+$/]                           $relayhost     = $postfix::relayhost,
+  Pattern[/^\S+(?:,\s*\S+)*$/]               $mydestination      = $postfix::mydestination,
+  Pattern[/^(?:\S+?(?:(?:,\s)|(?:\s))?)*$/]  $mynetworks         = $postfix::mynetworks,
+  Pattern[/^\S+$/]                           $relayhost          = $postfix::relayhost,
+                                             $transport_maps     = $postfix::transport_maps
+                                             $virtual_alias_maps = $postfix::virtual_alias_maps
 ) {
 
   # If direct is specified then relayhost should be blank
@@ -47,8 +49,8 @@ class postfix::mta (
 
   postfix::config {
     'mynetworks':          value => $mynetworks;
-    'virtual_alias_maps':  value => 'hash:/etc/postfix/virtual';
-    'transport_maps':      value => 'hash:/etc/postfix/transport';
+    'virtual_alias_maps':  value => $virtual_alias_maps;
+    'transport_maps':      value => $transport_maps;
   }
 
   postfix::hash { '/etc/postfix/virtual':
