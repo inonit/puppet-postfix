@@ -113,8 +113,8 @@ class postfix (
   String                          $mailx_ensure        = 'present',
   String                          $service_ensure      = 'running',
   Boolean                         $service_enabled     =  true,
-  String                          $transport_maps      = 'hash:/etc/postfix/transport'
-  String                          $virtual_alias_maps  = 'hash:/etc/postfix/virtual'
+  String                          $transport_maps      = 'hash:/etc/postfix/transport',
+  String                          $virtual_alias_maps  = 'hash:/etc/postfix/virtual',
 ) inherits postfix::params {
 
   $_smtp_listen = $mailman ? {
