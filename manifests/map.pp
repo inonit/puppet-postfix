@@ -12,7 +12,7 @@
 # [*type*]   - type of the postfix map (valid values are cidr, pcre, hash...)
 # [*path*]   - path of the created file. By default it is placed in the
 #              postfix directory.
-# [*mode*]   - mode of the created file. By default it is '0640'.
+# [*mode*]   - mode of the created file. By default it is '0644'.
 #
 # === Requires
 #
@@ -33,7 +33,7 @@ define postfix::map (
   Variant[Array[String], String, Undef] $content = undef,
   String                                $type = 'hash',
   Stdlib::Absolutepath                  $path = "/etc/postfix/${name}",
-  String[4,4]                           $mode = '0640'
+  String[4,4]                           $mode = '0644'
 ) {
   include ::postfix::params
 
